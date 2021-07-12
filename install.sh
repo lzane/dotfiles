@@ -1,5 +1,17 @@
 #!/bin/zsh
 
+# Define a function which rename a `target` file to `target.backup` if the file
+# exists and if it's a 'real' file, ie not a symlink
+backup() {
+  target=$1
+  if [ -e "$target" ]; then
+    if [ ! -L "$target" ]; then
+      mv "$target" "$target.backup"
+      echo "-----> Moved your old $target config file to $target.backup"
+    fi
+  fi
+}
+
 symlink() {
   file=$1
   link=$2
@@ -15,8 +27,22 @@ for name in *; do
   if [ ! -d "$name" ]; then
     target="$HOME/.$name"
     if [[ ! "$name" =~ '\.sh$' ]] && [ "$name" != 'README.md' ]; then
-      # backup $target
+      backup $target
       symlink $PWD/$name $target
     fi
   fi
 done
+
+# Install zsh-syntax-highlighting plugin
+CURRENT_DIR=`pwd`
+ZSH_PLUGINS_DIR="$HOME/.oh-my-zsh/custom/plugins"
+mkdir -p "$ZSH_PLUGINS_DIR" && cd "$ZSH_PLUGINS_DIR"
+if [ ! -d "$ZSH_PLUGINS_DIR/zsh-syntax-highlighting" ]; then
+  echo "-----> Installing zsh plugin 'zsh-syntax-highlighting'..."
+  git clone https://github.com/zsh-users/zsh-autosuggestions
+  git clone https://github.com/zsh-users/zsh-syntax-highlighting
+fi
+cd "$CURRENT_DIR"
+
+
+echo "🚀 Zane's dotfiles installed !"
