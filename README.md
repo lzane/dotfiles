@@ -1,2 +1,3 @@
-# dotfiles
-Zane's dotfiles
+# Zane's dotfiles
+
+https://www.lzane.com
