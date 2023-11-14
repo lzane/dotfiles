@@ -1,11 +1,12 @@
 // ==UserScript==
 // @name         gptx-auto-gpt
 // @namespace    https://www.lzane.com/
-// @version      0.1
+// @version      0.2
 // @description  GPTX 自动选择gpt4，支持hash传入query
 // @author       zane
 // @match        https://gptx.woa.com/
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=woa.com
+// @downloadURL  https://raw.githubusercontent.com/lzane/dotfiles/main/tampermonkey/gptx-auto-gpt.js
 // @grant        none
 // ==/UserScript==
 
