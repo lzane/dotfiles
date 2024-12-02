@@ -44,5 +44,10 @@ if [ ! -d "$ZSH_PLUGINS_DIR/zsh-syntax-highlighting" ]; then
 fi
 cd "$CURRENT_DIR"
 
+# Install fzf
+if ! command -v fzf >/dev/null; then
+  git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+  ~/.fzf/install --all
+fi
 
 echo "🚀 Zane's dotfiles installed !"
