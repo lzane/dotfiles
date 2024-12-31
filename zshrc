@@ -44,3 +44,7 @@ setopt HIST_REDUCE_BLANKS    # Remove superfluous blanks from each command line 
 
 # fzf 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+export PATH="$PATH:$HOME/.ft"
+
+# git
+alias glg="LESS='-SR' git lg --all"
